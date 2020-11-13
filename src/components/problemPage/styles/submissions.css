@@ -1,0 +1,22 @@
+#submissions {
+    font-size: 14px;
+    border-collapse: collapse;
+    border: 3px solid #b9b9b9;
+    width: 100%;
+    text-align: center;
+}
+
+#submissions td, #submissions th {
+    border: 1px solid #e1e1e1;
+    font-size: 15px;
+    height: 30px;
+}
+
+/* #submissions tr:nth-child(even){background-color: #f8f8f8;} */
+
+#submissions th {
+    font-size: 15px;
+    background-color: #fad75a;
+    color: #1b1b1b;
+}
+  

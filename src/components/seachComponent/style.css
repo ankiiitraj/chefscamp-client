@@ -1,0 +1,29 @@
+input {
+    border: 2px #b9b9b9 solid;
+    padding: 8px;
+}
+  
+.suggestions {
+    border: solid #b9b9b9 2px;
+    border-top-width: 0;
+    list-style: none;
+    margin: 0;
+    padding: 8px 4px;
+    text-align: left;
+}
+  
+.suggestions li {
+    padding: 0.5rem;
+}
+  
+.suggestion-active,
+.suggestions li:hover {
+    background-color: #fad75a;
+    color: #1b1b1b;
+    cursor: pointer;
+}
+  
+.suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #e1e1e1;
+}
+  

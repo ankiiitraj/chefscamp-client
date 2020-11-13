@@ -1,0 +1,38 @@
+#title {
+    text-align: center;
+    font-family: arial, sans-serif;
+}
+
+/* table {
+
+} */
+
+caption {
+    padding: 10px;
+    font-size: 2rem;
+}
+
+#ranklist {
+    border-collapse: collapse;
+    border: 3px solid #b9b9b9;
+    width: 100%;
+}
+
+#ranklist td, #ranklist th {
+    border: 1px solid #e1e1e1;
+    padding: 8px;
+    text-align: left;
+}
+#ranklist td {
+    cursor: pointer;
+}
+
+/* #ranklist tr:nth-child(even){background-color: #f8f8f8;} */
+
+#ranklist th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #fad75a;
+    color: #1b1b1b;
+}
+  

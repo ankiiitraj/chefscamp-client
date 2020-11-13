@@ -1,0 +1,17 @@
+.rankButton{
+    padding-top: 35px;
+    height: 100px;
+}
+.rankButton button{
+    background-color: #fad75a;
+    border-radius: 10px;
+    border: medium none;
+    padding: 10px 12px;
+    color: black;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 3px;
+    transition: background 350ms cubic-bezier(0, 0, 0.25, 1) 0s;
+    cursor: pointer;
+    margin: 5px 5px;
+}
