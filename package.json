@@ -2,6 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:88/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -15,6 +16,7 @@
     "react-mathjax": "^1.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-toast-notifications": "^2.4.0",
     "remark-math": "^2.0.1"
   },
   "scripts": {

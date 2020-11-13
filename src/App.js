@@ -12,25 +12,9 @@ import axios from "axios";
 import Cookie from "js-cookie";
 import NotFound from "./components/NotFound.jsx";
 import Footer from "./components/Footer";
+import {light, dark} from "./theme";
+import { ToastProvider } from "react-toast-notifications";
 import './app.css';
-
-const light = {
-  minHeight: "100vh",
-  minWidth: "max-content",
-  backgroundColor: "white",
-  color: "black",
-  paddingTop: "5px",
-  transition: "background 1s ease, padding 0.8s linear",
-};
-const dark = {
-  backgroundColor: "#1b1b1b",
-  minWidth: "max-content",
-  minHeight: "100vh",
-  color: "white",
-  paddingTop: "5px",
-  borderColor: "white",
-  transition: "background 1s ease, padding 0.8s linear",
-};
 
 class App extends Component {
   constructor(props) {
@@ -76,6 +60,8 @@ class App extends Component {
       userName: "",
       band: "",
       isLoggedIn: false,
+      loading: false,
+      message: null
     });
     Cookie.remove("userName");
     Cookie.remove("band");
@@ -92,24 +78,22 @@ class App extends Component {
       });
     } else if (code) {
       this.setState({ loading: true });
-      // console.log(code);
       axios
-        .get(`/api/auth/?code=${code}`)
-        .then((res) => {
-          // console.log(res);
-          Cookie.set("userName", res.data.result.data.content.username, {
-            expires: 30,
-          });
-          Cookie.set("band", res.data.result.data.content.band, {
-            expires: 30,
-          });
-          this.handleLogin(
-            res.data.result.data.content.username,
-            res.data.result.data.content.band
+      .get(`/api/auth/?code=${code}`)
+      .then((res) => {
+        Cookie.set("userName", res.data.result.data.content.username, {
+          expires: 30,
+        });
+        Cookie.set("band", res.data.result.data.content.band, {
+          expires: 30,
+        });
+        this.handleLogin(
+          res.data.result.data.content.username,
+          res.data.result.data.content.band
           );
         })
-        .catch((err) => {
-          console.log("err", err);
+        .catch(() => {
+          this.setState({ loading: false, message: "Login failed, please try again!" });
         });
     }
   }
@@ -138,64 +122,66 @@ class App extends Component {
       >
         <center>
           <div style={{ width: "963px", maxWidth: "963px", position: "relative" }}>
-            <Router>
-              <NavBar
-                handleToggle={this.handleToggle}
-                color={this.state.theme.color}
-                handleLogout={this.handleLogout}
-                userName={
-                  this.state.loading
-                    ? ". . ."
-                    : this.state.userName === ""
-                    ? "User"
-                    : this.state.userName
-                }
-                band={this.state.band === "" ? "N/A" : this.state.band}
-              />
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={(props) =>
-                    this.state.isLoggedIn ? (
-                      <Search
-                        {...this.state}
-                        contests={this.state.contests}
-                        handleLiftContests={this.handleLiftContests}
-                      />
-                    ) : (
-                      <Login />
-                    )
+            <ToastProvider>
+              <Router>
+                <NavBar
+                  handleToggle={this.handleToggle}
+                  color={this.state.theme.color}
+                  handleLogout={this.handleLogout}
+                  userName={
+                    this.state.loading
+                      ? ". . ."
+                      : this.state.userName === ""
+                      ? "User"
+                      : this.state.userName
                   }
+                  band={this.state.band === "" ? "N/A" : this.state.band}
                 />
-                <ProtectedRoute
-                  exact
-                  userDetails={this.state}
-                  path="/contest/:contestCode"
-                  component={ContestPage}
-                />
-                <ProtectedRoute
-                  exact
-                  userDetails={this.state}
-                  path="/ranklist/:contestCode"
-                  component={Ranklist}
-                />
-                <ProtectedRoute
-                  exact
-                  userDetails={this.state}
-                  path="/contest/:contestCode/problem/:problemCode"
-                  component={ProblemInfo}
-                />  
-                <ProtectedRoute
-                  exact
-                  userDetails={this.state}
-                  path="/ide"
-                  component={Ide}
-                />
-                <Route path="/" component={NotFound} />
-              </Switch>
-              <Footer userDetails={this.state} />
-            </Router>
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={(props) =>
+                      this.state.isLoggedIn ? (
+                        <Search
+                          {...this.state}
+                          contests={this.state.contests}
+                          handleLiftContests={this.handleLiftContests}
+                        />
+                      ) : (
+                        <Login message={this.state.message} loading={this.state.loading}/>
+                      )
+                    }
+                  />
+                  <ProtectedRoute
+                    exact
+                    userDetails={this.state}
+                    path="/contest/:contestCode"
+                    component={ContestPage}
+                  />
+                  <ProtectedRoute
+                    exact
+                    userDetails={this.state}
+                    path="/ranklist/:contestCode"
+                    component={Ranklist}
+                  />
+                  <ProtectedRoute
+                    exact
+                    userDetails={this.state}
+                    path="/contest/:contestCode/problem/:problemCode"
+                    component={ProblemInfo}
+                  />  
+                  <ProtectedRoute
+                    exact
+                    userDetails={this.state}
+                    path="/ide"
+                    component={Ide}
+                  />
+                  <Route path="/" component={NotFound} />
+                </Switch>
+                <Footer userDetails={this.state} />
+              </Router>
+            </ToastProvider>
           </div>
         </center>
       </div>

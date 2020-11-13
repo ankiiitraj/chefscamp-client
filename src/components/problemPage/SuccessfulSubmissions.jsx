@@ -77,20 +77,22 @@ class SuccessfulSubmissions extends Component {
       );
     } else {
       return (
-        <div
-          style={{
-            border: "solid #b9b9b9 3px",
-            width: "320px",
-            height: "211px",
-          }}
-        >
-          <table id="submissions">
-            <caption style={{ textAlign: "left", fontSize: "15px" }}>
-              <b>Successful Submissions</b>
-            </caption>
-            <strong style={{ marginTop: "211px" }}>Loading . . .</strong>
-          </table>
-        </div>
+        <>
+          <div
+            style={{
+              border: "solid #b9b9b9 3px",
+              width: "320px",
+              height: "211px",
+            }}
+          >
+            <table id="submissions">
+              <caption style={{ textAlign: "left", fontSize: "15px" }}>
+                <b>Successful Submissions</b>
+              </caption>
+              <tbody><tr><td><strong style={{ marginTop: "211px" }}>Loading . . .</strong></td></tr></tbody>
+            </table>
+          </div>
+        </>
       );
     }
   }
