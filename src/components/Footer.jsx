@@ -7,7 +7,7 @@ import gmailLogo from "./logos/gmail.ico";
 class Footer extends Component {
   render() {
     return (
-      <div style={{border: "3px solid #b9b9b9", marginTop: "5px"}}>
+      <div style={{ boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", borderRadius: "10px", margin: "15px 15px 0px 15px", padding: "10px" }}>
         <ul style={{listStyleType: "none", overflow: "hidden", margin: "0", padding: "0"}}>
           <li style={{padding: "10px", float: "left"}}>
             <div>

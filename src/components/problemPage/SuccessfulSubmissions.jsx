@@ -63,7 +63,7 @@ class SuccessfulSubmissions extends Component {
   render() {
     if (this.state.loaded) {
       return (
-        <div style={{ border: "solid #b9b9b9 3px" }}>
+        <div style={{ boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", borderRadius: "10px" }}>
           <table id="submissions">
             <caption style={{ textAlign: "left", fontSize: "15px" }}>
               <b>Successful Submissions</b>
@@ -80,7 +80,8 @@ class SuccessfulSubmissions extends Component {
         <>
           <div
             style={{
-              border: "solid #b9b9b9 3px",
+              boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", 
+              borderRadius: "10px",
               width: "320px",
               height: "211px",
             }}

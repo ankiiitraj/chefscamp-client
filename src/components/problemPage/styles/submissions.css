@@ -1,13 +1,13 @@
 #submissions {
     font-size: 14px;
     border-collapse: collapse;
-    border: 3px solid #b9b9b9;
+    /* border: 3px solid #b9b9b9; */
     width: 100%;
     text-align: center;
 }
 
 #submissions td, #submissions th {
-    border: 1px solid #e1e1e1;
+    /* border: 1px solid #e1e1e1; */
     font-size: 15px;
     height: 30px;
 }

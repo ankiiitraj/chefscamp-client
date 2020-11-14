@@ -14,12 +14,10 @@ caption {
 
 #ranklist {
     border-collapse: collapse;
-    border: 3px solid #b9b9b9;
     width: 100%;
 }
 
 #ranklist td, #ranklist th {
-    border: 1px solid #e1e1e1;
     padding: 8px;
     text-align: left;
 }

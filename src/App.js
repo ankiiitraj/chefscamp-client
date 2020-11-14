@@ -121,7 +121,7 @@ class App extends Component {
         }}
       >
         <center>
-          <div style={{ width: "963px", maxWidth: "963px", position: "relative" }}>
+          <div style={{ width: "1000px", maxWidth: "1000px", position: "relative" }}>
             <ToastProvider>
               <Router>
                 <NavBar

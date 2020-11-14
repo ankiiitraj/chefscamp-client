@@ -34,6 +34,11 @@ class ProblemInfo extends Component {
             message: "Problems statement not currently available . . ."
           });
         }
+      })
+      .catch(() => {
+        this.setState({
+          message: "Problems statement not currently available . . ."
+        });
       });
   }
 
@@ -47,21 +52,9 @@ class ProblemInfo extends Component {
       );
       return (
         <ul className="problemPage">
-          <li style={{ textAlign: "left" }}>
-            <strong>
-              <Link
-                to={this.state.path}
-                style={{ color: "#777", fontSize: "20px" }}
-              >
-                {" "}
-                &lt;-Go Back
-              </Link>
-            </strong>
-          </li>
           <li style={{ float: "left", width: "610px" }}>
             <div className="problemDescription">
-              <h1>Problem Description</h1>
-              <ul>
+              <ul style={{ boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", borderRadius: "10px" }}>
                 <li style={{ float: "left" }}>
                   <h2>
                     {this.state.data.result.data.content.problemName} |{" "}
@@ -97,22 +90,10 @@ class ProblemInfo extends Component {
       if (this.state.message === "") {
         return (
           <ul className="problemPage">
-            <li style={{ textAlign: "left" }}>
-              <strong>
-                <Link
-                  to={this.state.path}
-                  style={{ color: "#777", fontSize: "20px" }}
-                >
-                  {" "}
-                  &lt;-Go Back
-                </Link>
-              </strong>
-            </li>
-            <li style={{ float: "left", width: "610px" }}>
+            <li style={{ float: "left", width: "610px", paddingTop: "50px" }}>
               <div className="problemDescription">
-                <h1>Problem Description</h1>
                 <center>
-                  <strong style={{ marginTop: "100px" }}>Loading . . .</strong>
+                  <strong style={{ fontSize: "x-large" }}>Loading . . .</strong>
                 </center>
               </div>
             </li>
@@ -128,22 +109,10 @@ class ProblemInfo extends Component {
       } else {
         return (
           <ul className="problemPage">
-            <li style={{ textAlign: "left" }}>
-              <strong>
-                <Link
-                  to={this.state.path}
-                  style={{ color: "#777", fontSize: "20px" }}
-                >
-                  {" "}
-                  &lt;-Go Back
-                </Link>
-              </strong>
-            </li>
-            <li style={{ float: "left", width: "610px" }}>
+            <li style={{ float: "left", width: "610px", paddingTop: "50px" }}>
               <div className="problemDescription">
-                <h1>Problem Description</h1>
                 <center>
-                  <strong style={{ marginTop: "100px" }}>
+                  <strong style={{ fontSize: "x-large" }}>
                     Some thing went wrong . . . <Link to="/">Go back</Link>
                   </strong>
                 </center>

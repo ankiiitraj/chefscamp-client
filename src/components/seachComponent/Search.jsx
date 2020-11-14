@@ -102,7 +102,8 @@ class Search extends Component {
     const textBox = {
       height: "30px",
       width: "500px",
-      border: "solid #b9b9b9 2px"
+      boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", 
+      borderRadius: "10px",    
     };
     const searchList = {
       width: "calc(508px)"
@@ -145,7 +146,9 @@ class Search extends Component {
     return (
       <div
         style={{
-          border: "solid #b9b9b9 3px",
+          boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", 
+          borderRadius: "10px", 
+          margin: "15px",
           height: "480px",
           paddingTop: "150px"
         }}

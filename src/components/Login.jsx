@@ -32,7 +32,9 @@ class login extends Component {
         style={{
           paddingTop: "150px",
           height: "450px",
-          border: "solid #b9b9b9 3px",
+          boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", 
+          borderRadius: "10px", 
+          margin: "15px" 
         }}
       >
         <div>

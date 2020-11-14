@@ -1,3 +1,9 @@
+.ide{
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,.35); 
+    border-radius: 10px; 
+    margin: 15px;
+    padding: 10px;
+}
 .ide ul{
     list-style-type: none;
     overflow: hidden;
@@ -5,12 +11,13 @@
     padding: 0;
 }
 .ide textarea{
-    margin-top: 5px;
+    margin-top: 15px;
     width: 460px;
     height: 150px;
-    border: solid #b9b9b9 3px;
     resize: none;
     font-size: 15px;
+    border: 0;
+    background-color: #eeeeee;
 }
 
 .ide ::placeholder{

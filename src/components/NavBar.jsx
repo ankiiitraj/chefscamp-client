@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {ReactComponent as Logo} from "./logos/logo.svg";
 import Cookie from "js-cookie";
+import { colors } from "./bandColors";
 import { Link } from "react-router-dom";
 
 const ul = {
@@ -12,22 +13,11 @@ const ul = {
   lineHeight: "40px"
 };
 
-const colors = {
-  "N/A": "#fad75a",
-  "1★": "#666666",
-  "2★": "#1e7d22",
-  "3★": "#3366cc",
-  "4★": "#684273",
-  "5★": "#ffbf00",
-  "6★": "#ff7f00",
-  "7★": "#d0011b",
-};
 const style = {
   backgroundColor: "#fad75a",
   borderRadius: "10px",
   border: "medium none",
   padding: "10px 12px",
-  // fontSize: "14px",
   fontWeight: "bold",
   letterSpacing: "3px",
   transition: "background 350ms cubic-bezier(0, 0, 0.25, 1) 0s",
@@ -46,20 +36,17 @@ class NavBar extends Component {
   render() {
     return (
       <React.Fragment>
-        <div style={{textAlign: 'left', padding: '10px'}}>
-          <Link to="/">
+        <div style={{textAlign: 'center', padding: '10px'}}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <strong style={{ fontSize: "30px", color: this.props.color }}>
               &lt; Chef&apos;sCamp
               <Logo />
               {" "}/&gt;
             </strong>
           </Link>
-          {this.props.color === "white" && <span style={{float: 'right', marginTop: "20px", fontSize: "20px"}}>
-            Welcome to the DarkSide!
-          </span>}
         </div>
         <div style={{position: 'absolute', left: '-60px'}}>
-          <div style={{position: 'fixed', marginTop: '10px'}}>
+          <div style={{position: 'fixed', marginTop: '25px'}}>
             <div
               style={{ float: "right", cursor: "pointer"}}
               onClick={this.props.handleToggle}
@@ -78,7 +65,7 @@ class NavBar extends Component {
             </div>
           </div>
         </div>
-        <nav style={{ border: "solid #b9b9b9 3px", marginBottom: "5px" }}>
+        <nav style={{ boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", borderRadius: "10px", margin: "15px", padding: "5px" }}>
           <ul style={ul}>
             {Cookie.get("userName") && ( 
               <li style={{ float: "right", fontSize: "20px", marginRight: "15px" }}>
