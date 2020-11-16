@@ -21,18 +21,20 @@ class ListProblems extends Component {
   componentDidMount() {
     document.title = `${this.props.contestCode}-Chef'sCamp`;
     let userName = Cookie.get("userName");
-    axios.get(`/api/contests/${this.props.contestCode}/${userName}`).then((res) => {
-      this.props.handleLiftContestDetail(res.data);
-      if (res.data.result.data.content.problemsList.length > 0) {
-        this.setState({ loaded: true });
-      } else {
+    axios.get(`/api/contests/${this.props.contestCode}/${userName}`)
+      .then((res) => {
+        this.props.handleLiftContestDetail(res.data);
+        if (res.data.result.data.content.problemsList.length > 0) {
+          this.setState({ loaded: true });
+        }
+      })
+      .catch(() => {
         this.setState({
           loaded: true,
           message: "Problems not currently available . . .",
           is404: true,
         });
-      }
-    });
+      });
   }
   renderTableData() {
     return this.props.data.result.data.content.problemsList.map(

@@ -9,6 +9,7 @@ class Ranklist extends Component {
 		this.state = {
 			loaded: false,
 			data: null,
+			message: "Loading . . ."
 		};
 		
 		this.componentDidMount = this.componentDidMount.bind(this);
@@ -24,6 +25,9 @@ class Ranklist extends Component {
 			)
 			.then(res => {
 				this.setState({ loaded: true, data: res.data });
+			})
+			.catch(() => {
+				this.setState({ message: "Something went wrong, try agagin later!" })
 			});
 	}
 	renderTableData() {
@@ -69,7 +73,7 @@ class Ranklist extends Component {
 						fontSize: "30px"
 					}}
 				>
-					<strong>Loading . . .</strong>
+					<strong style={{ color: (this.state.message !== "Loading . . ." ? '#d94d65' : '') }} >{this.state.message}</strong>
 				</div>
 			);
 		}

@@ -9,13 +9,17 @@ class SuccessfulSubmissions extends Component {
     this.state = {
       loaded: false,
       data: null,
-      message: null,
+      message: "Loading . . .",
       showMess: false,
     };
   }
   componentWillReceiveProps(newProps) {
     let userName = Cookie.get("userName");
-    if (newProps.probStatus) {
+    if(newProps.submissions){
+      this.setState({
+        message: "Internal server error, try later!",
+      });
+    }else if (newProps.probStatus) {
       axios
         .get(`/api/submissions/${newProps.problemCode}/${userName}`)
         .then((res) => {
@@ -30,6 +34,11 @@ class SuccessfulSubmissions extends Component {
               message: res.data.result.data.message,
             });
           }
+        })
+        .catch(() => {
+          this.setState({
+            message: "Internal server error, try later!",
+          });
         });
     }
   }
@@ -90,7 +99,7 @@ class SuccessfulSubmissions extends Component {
               <caption style={{ textAlign: "left", fontSize: "15px" }}>
                 <b>Successful Submissions</b>
               </caption>
-              <tbody><tr><td><strong style={{ marginTop: "211px" }}>Loading . . .</strong></td></tr></tbody>
+              <tbody><tr><td><strong style={{ marginTop: "211px" }}>{this.state.message}</strong></td></tr></tbody>
             </table>
           </div>
         </>

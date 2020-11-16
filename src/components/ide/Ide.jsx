@@ -56,12 +56,12 @@ class Ide extends Component {
           output: "Something went wrong, try again!",
         });
       });
-    // console.log(payload.language, payload.sourceCode, payload.input);
   }
   getStatus() {
     this.numRequests += 1;
     let userName = Cookie.get("userName");
-    axios.get(`/api/ide/status/${this.state.link}/${userName}`).then((res) => {
+    axios.get(`/api/ide/status/${this.state.link}/${userName}`)
+    .then((res) => {
       if (this.numRequests > 3) {
         this.setState({
           output: "Timed Out, try again!",
@@ -91,6 +91,13 @@ class Ide extends Component {
         this.numRequests = 0;
         clearInterval(this.intervalID);
       }
+    })
+    .catch(() => {
+      clearInterval(this.intervalID);
+      this.setState({
+        output: "Internal server error, try again later!",
+        disabled: !this.state.disabled,
+      });
     });
   }
   componentDidMount(){

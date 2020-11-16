@@ -14,7 +14,8 @@ class ProblemInfo extends Component {
       loaded: false,
       data: null,
       message: "",
-      path: `/contest/${this.props.match.params.contestCode}`
+      path: `/contest/${this.props.match.params.contestCode}`,
+      submissions: false
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -37,7 +38,8 @@ class ProblemInfo extends Component {
       })
       .catch(() => {
         this.setState({
-          message: "Problems statement not currently available . . ."
+          message: "Problems statement not currently available . . .",
+          submissions: true
         });
       });
   }
@@ -113,7 +115,7 @@ class ProblemInfo extends Component {
               <div className="problemDescription">
                 <center>
                   <strong style={{ fontSize: "x-large" }}>
-                    Some thing went wrong . . . <Link to="/">Go back</Link>
+                    Some thing went wrong . . . <Link to={`/contest/${this.props.match.params.contestCode}`}>Go back</Link>
                   </strong>
                 </center>
               </div>
@@ -122,6 +124,7 @@ class ProblemInfo extends Component {
               <SuccessfulSubmissions
                 theme={this.props.userDetails.themeBool}
                 probStatus = {this.state.loaded} 
+                submissions = {this.state.submissions}
               />
             </li>
           </ul>

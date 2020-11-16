@@ -11,7 +11,8 @@ class Search extends Component {
       value: "",
       selected: "",
       indexSelected: 0,
-      suggestions: []
+      suggestions: [],
+      message: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -22,9 +23,14 @@ class Search extends Component {
     let userName = Cookie.get("userName");
     console.log(this.props.contests && 1);
     if (!this.props.contests && userName) {
-      axios.get(`/api/contests/${userName}`).then(res => {
-        this.props.handleLiftContests(res.data);
-      });
+      axios
+        .get(`/api/contests/${userName}`)
+        .then((res) => {
+          this.props.handleLiftContests(res.data);
+        })
+        .catch(() => {
+          this.setState({ message: "Contest loading failed! try reloading!" });
+        });
     }
   }
 
@@ -43,7 +49,7 @@ class Search extends Component {
       value: event.target.innerText,
       selected: event.target.getAttribute("data-code"),
       indexSelected: 0,
-      redirect: true
+      redirect: true,
     });
   }
 
@@ -53,7 +59,9 @@ class Search extends Component {
       if (this.state.suggestions.length === 0) {
         alert("Enter valid input!");
       } else {
-        this.props.history.push(`/contest/${this.state.suggestions[this.state.indexSelected].code}`);
+        this.props.history.push(
+          `/contest/${this.state.suggestions[this.state.indexSelected].code}`
+        );
       }
     }
 
@@ -102,11 +110,11 @@ class Search extends Component {
     const textBox = {
       height: "30px",
       width: "500px",
-      boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", 
-      borderRadius: "10px",    
+      boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)",
+      borderRadius: "10px",
     };
     const searchList = {
-      width: "calc(508px)"
+      width: "calc(508px)",
     };
 
     let renderList;
@@ -120,11 +128,10 @@ class Search extends Component {
                 className = "suggestion-active";
               }
               return (
-                <li
-                  key={suggestion.code}
-                  className={className}
-                >
-                  <Link to={`/contest/${suggestion.code}`}>{suggestion.detail}</Link>
+                <li key={suggestion.code} className={className}>
+                  <Link to={`/contest/${suggestion.code}`}>
+                    {suggestion.detail}
+                  </Link>
                 </li>
               );
             })}{" "}
@@ -133,7 +140,7 @@ class Search extends Component {
       } else {
         renderList = null;
       }
-    } else {
+    } else if(!this.state.message){
       renderList = (
         <ul style={searchList} className="suggestions">
           <li>
@@ -142,15 +149,15 @@ class Search extends Component {
         </ul>
       );
     }
-    
+
     return (
       <div
         style={{
-          boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", 
-          borderRadius: "10px", 
+          boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)",
+          borderRadius: "10px",
           margin: "15px",
           height: "480px",
-          paddingTop: "150px"
+          paddingTop: "150px",
         }}
       >
         <input
@@ -162,6 +169,20 @@ class Search extends Component {
           placeholder="e.g. JAN17, january long"
         />
         {renderList}
+        {this.state.message && (
+          <div
+            style={{
+              backgroundColor: "#d94d65",
+              margin: "1em",
+              padding: "1em",
+              width: "250px",
+              borderRadius: "20px",
+              textAlign: "center"
+            }}
+          >
+            <strong>{this.state.message}</strong>
+          </div>
+        )}
       </div>
     );
   }

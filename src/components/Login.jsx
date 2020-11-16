@@ -21,6 +21,10 @@ class login extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount(){
+    document.title = `Chef'sCamp`;
+  }
+
   handleClick(event) {
     event.preventDefault();
     window.location.href = `https://api.codechef.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&state=xyz&redirect_uri=${process.env.REACT_APP_REDIRECT_URL}`;
