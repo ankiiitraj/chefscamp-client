@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MarkdownRender from "../../MarkdownRender.js";
 import SuccessfulSubmissions from "./SuccessfulSubmissions";
+import ErrorBoundary from "../errorBoundary";
 import axios from "axios";
 import Cookie from "js-cookie";
 import "./styles/problemDescription.css";
@@ -50,7 +51,7 @@ class ProblemInfo extends Component {
       data = data.replace(/`/g, "");
       data = data.replace(/###/g, "");
       let renderProblemStatement = (
-        <MarkdownRender source={data} />
+        <ErrorBoundary><MarkdownRender source={data} /></ErrorBoundary>
       );
       return (
         <ul className="problemPage">
