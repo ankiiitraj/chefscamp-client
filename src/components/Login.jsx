@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Welcome from "./Welcome";
+import "./login.css";
+import { Link } from "react-router-dom";
 
 const style = {
   backgroundColor: "#fad75a",
@@ -7,7 +9,7 @@ const style = {
   border: "medium none",
   padding: "1.2em 1.3em",
   color: "black",
-  fontSize: "25px",
+  fontSize: "20px",
   boxShadow: "0 0 5px -1px rgba(0,0,0,0.2)",
   fontWeight: "bold",
   letterSpacing: "3px",
@@ -43,26 +45,37 @@ class login extends Component {
       >
         <div>
           <Welcome />
-          <button
-            style={{ ...style, cursor: this.props.loading ? "" : "pointer" }}
-            disabled={this.props.loading}
-            onClick={this.handleClick}
-          >
-            {this.props.loading ? "Signing in . . ." : "Login With Codechef"}
-          </button>
-          {this.props.message && (
-            <div
-              style={{
-                backgroundColor: "#d94d65",
-                margin: "1em",
-                padding: "1em",
-                width: "250px",
-                borderRadius: "20px",
-              }}
-            >
-              <strong>{this.props.message}</strong>
+          <div className="login-div">
+            <div className="login-div-practice">
+              <h1>Practice at Gym!</h1>
+              <Link style={{fontSize: "x-large"}} to="/gym">Gym</Link>
             </div>
-          )}
+            <div className="login-div-login">
+              <h3>
+                Hit <i>login</i> to get started!
+              </h3>
+              <button
+                style={{ ...style, cursor: this.props.loading ? "" : "pointer" }}
+                disabled={this.props.loading}
+                onClick={this.handleClick}
+              >
+                {this.props.loading ? "Signing in . . ." : "Login With Codechef"}
+              </button>
+              {this.props.message && (
+                <div
+                  style={{
+                    backgroundColor: "#d94d65",
+                    margin: "1em",
+                    padding: "1em",
+                    width: "250px",
+                    borderRadius: "20px",
+                  }}
+                >
+                  <strong>{this.props.message}</strong>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );

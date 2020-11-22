@@ -1,0 +1,14 @@
+.login-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.login-div-practice{
+    padding: 15px;
+}
+
+.login-div-login{
+    border-left: solid 1px #b9b9b9;
+    padding: 15px;
+}

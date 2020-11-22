@@ -1,0 +1,18 @@
+.tagutil{
+    padding: 10px;
+    text-align: center;
+    width: 33%;
+}
+.taglist-tag{
+    display: inline-block;
+    margin: 5px 5px 0px 0px;
+    padding: 5px;
+    background-color: #fad75a;
+    color: #1b1b1b;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.taglist-tag-count{
+    border-left: solid 1px #705908;
+    background-color: #e8b913;
+}

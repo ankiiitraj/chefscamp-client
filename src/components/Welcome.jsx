@@ -14,9 +14,6 @@ class Welcome extends Component {
               /&gt;
             </span>
           </h1>
-          <h3>
-            Hit <i>login</i> to get started!
-          </h3>
         </center>
       </div>
     );

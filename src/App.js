@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import {light, dark} from "./theme";
 import { ToastProvider } from "react-toast-notifications";
 import './app.css';
+import Gym from "./components/gym/Gym.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -177,6 +178,7 @@ class App extends Component {
                     path="/ide"
                     component={Ide}
                   />
+                  <Route path="/gym" component={Gym} />
                   <Route path="/" component={NotFound} />
                 </Switch>
                 <Footer userDetails={this.state} />

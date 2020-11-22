@@ -99,6 +99,14 @@ class NavBar extends Component {
             </li>
             <li style={{ float: 'left', marginLeft: "15px" }}>
               <Link
+                to="/gym"
+                style={{ color: this.props.color, fontSize: "20px" }}
+              >
+                Gym
+              </Link>
+            </li>
+            <li style={{ float: 'left', marginLeft: "15px" }}>
+              <Link
                 to="/ide"
                 style={{ color: this.props.color, fontSize: "20px" }}
               >

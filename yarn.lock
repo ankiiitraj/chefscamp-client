@@ -5255,6 +5255,11 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+goober@^2.0.4:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.0.15.tgz#da0429f6a3b90420d705c0311650d27d636ea595"
+  integrity sha512-mdEMp8LcMvVt1tn3ZW+Rhk8DlmQlRfvU3SmY7KymcCE906qec8IKB31UpptO7emg/fRxYYgamx44a5ILzSNIpQ==
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
@@ -9202,6 +9207,13 @@ react-mathjax@^1.0.1:
   integrity sha512-+mjFcciZY3GQoqiQm3aRTyDjgBKuoaXpY+SCONX00jScuPpTKwnASeFMS5+pbTIzDf5zPT2Y9ZZfQ9U/d4CKtQ==
   dependencies:
     load-script "^1.0.0"
+
+react-multi-select-component@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-multi-select-component/-/react-multi-select-component-3.0.7.tgz#73a1642cd795bfc7ac878371cf1bb9bb4b508a37"
+  integrity sha512-Mhvn8ANIaFOzj7dKz8DEQNcCS2ZikesuWNpmEbbWkDG2Hwbao2QcmLTyiSPQILMo+NP8D2+KWQu5qDN1wV9Cqw==
+  dependencies:
+    goober "^2.0.4"
 
 react-router-dom@^5.1.2:
   version "5.2.0"

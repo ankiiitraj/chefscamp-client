@@ -1,0 +1,26 @@
+.gym{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+    min-height: 55vh;
+}
+.gym-popular-tags{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 15px;
+}
+.gym-tags-select{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
+    border-radius: 10px;
+    margin: 5px 5px 20px 5px;
+    padding: 15px;
+    min-height: 35vh;
+}
