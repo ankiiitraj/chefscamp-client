@@ -1,7 +1,6 @@
 .tagutil{
     padding: 10px;
-    text-align: center;
-    width: 33%;
+    text-align: left;
 }
 .taglist-tag{
     display: inline-block;

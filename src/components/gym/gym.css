@@ -2,25 +2,20 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
     border-radius: 10px;
     margin: 15px;
-    padding: 15px;
-    min-height: 55vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .gym-popular-tags{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
     border-radius: 10px;
-    margin: 5px;
-    padding: 15px;
+    margin: 15px;
+    padding: 0px 15px 15px 15px;
+    text-align: left !important;
+    width: 35%;
+    height: fit-content;
 }
 .gym-tags-select{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
-    border-radius: 10px;
-    margin: 5px 5px 20px 5px;
-    padding: 15px;
-    min-height: 35vh;
+    width: 65%;
+    margin: 15px 0px;
 }

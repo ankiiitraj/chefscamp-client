@@ -178,7 +178,7 @@ class App extends Component {
                     path="/ide"
                     component={Ide}
                   />
-                  <Route path="/gym" component={Gym} />
+                  <Route exact path="/gym" component={Gym} />
                   <Route path="/" component={NotFound} />
                 </Switch>
                 <Footer userDetails={this.state} />
