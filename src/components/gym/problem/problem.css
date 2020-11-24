@@ -1,0 +1,98 @@
+.problem-container{
+    min-height: 70vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 5px;
+}
+.problem-container-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 20px;
+}
+.problem-container-button{
+    background-color: rgb(250, 215, 90);
+    border-radius: 10px;
+    border: medium none;
+    padding: 10px 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 350ms cubic-bezier(0, 0, 0.25, 1) 0s;
+    cursor: pointer;
+}
+.problem-container-details{
+    display: flex;
+    justify-content: space-evenly;
+}
+.problem-container-statement{
+    width: 65%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
+    border-radius: 10px;
+    margin: 5px 5px 5px 15px;
+    padding: 20px;
+    text-align: left;
+    line-height: 1.618;
+    font-size: large;
+}
+.problem-container-meta{
+    width: 35%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 5px;
+    border-radius: 10px;
+    margin: 5px 15px 5px 5px;
+    padding: 10px;
+    height: fit-content;
+    text-align: left;
+    color: #777;
+}
+.problem-container-meta h5{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+}
+.problem-container-meta h5 span{
+    color: #ff4500;
+    font-size: medium;
+}
+.problem-container-tag-pill{
+    display: inline-block;
+    margin: 0px 5px 5px 0;
+    padding: 5px;
+    background-color: #fad75a;
+    color: #1b1b1b;
+    border-radius: 10px;
+}
+.problem-container-hr{
+    overflow: visible;
+    border: 0;
+    content: "";
+    background-color: #bada55;
+    display: block;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    position: relative;
+}
+.problem-container-hr:before{
+    content: "";
+    background-color: #bada55;
+    display: block;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    position: absolute;
+    left: -32px;
+}
+.problem-container-hr:after{
+    content: "";
+    background-color: #bada55;
+    display: block;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    position: absolute;
+    left: 32px;
+}

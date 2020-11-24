@@ -16,6 +16,7 @@ import {light, dark} from "./theme";
 import { ToastProvider } from "react-toast-notifications";
 import './app.css';
 import Gym from "./components/gym/Gym.jsx";
+import Problem from "./components/gym/problem/Problem";
 
 class App extends Component {
   constructor(props) {
@@ -179,6 +180,7 @@ class App extends Component {
                     component={Ide}
                   />
                   <Route exact path="/gym" component={Gym} />
+                  <Route exact path="/gym/problem/:problemCode" component={Problem} />
                   <Route path="/" component={NotFound} />
                 </Switch>
                 <Footer userDetails={this.state} />
