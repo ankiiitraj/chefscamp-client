@@ -41,7 +41,7 @@ const ProblemList = ({ problemList, tagList, message }) => {
               <div key={idx} className="problemlist-problem">
                 <div className="problemlist-heading">
                   <div style={{ fontSize: "x-large" }}>
-                    <Link to={`/gym/${item.code}`} target="_blank">
+                    <Link to={`/gym/problem/${item.code}`} target="_blank">
                       <b>{item.code}</b><ExternalLink height={25} width={25} />
                     </Link>
                   </div>

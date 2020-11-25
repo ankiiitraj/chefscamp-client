@@ -16,7 +16,7 @@ const Gym = () => {
     privateTags: [],
   });
   const [singleTag, updateSingleTag] = useState("");
-
+	const [showTagSwitch, toggle] = useState(0);
   const fetchTags = async () => {
     try {
       const { data } = await axios.get(`/api/tags`);
@@ -56,21 +56,21 @@ const Gym = () => {
               <Tagutil
                 status={status}
                 type="topic"
-                title="Popular topic tags"
+                title="Popular CONCEPT tags"
                 tags={tags.topicTags}
                 updateSingleTag={updateSingleTag}
               />
               <Tagutil
                 status={status}
                 type="author"
-                title="Popular author tags"
+                title="Popular AUTHOR tags"
                 tags={tags.authorTags}
                 updateSingleTag={updateSingleTag}
               />
               <Tagutil
                 status={status}
                 type="private"
-                title="Your private tags"
+                title="Your PRIVATE tags"
                 tags={tags.privateTags}
                 updateSingleTag={updateSingleTag}
               />
@@ -93,6 +93,36 @@ const Gym = () => {
         <div className="gym-tags-select">
           <FilterTags singleTag={singleTag} tags={tags.tags} />
         </div>
+      </div>
+      <div className="alltags-container">
+        <div className="alltags-heading">
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div><h1>List all tags?{" "}</h1></div>
+            <div style={{ marginLeft: "15px", paddingBottom: "15px" }}>
+              <input checked={showTagSwitch} onChange={() => {
+								toggle(!showTagSwitch);
+							}} type="checkbox" id="switch" />
+              <label htmlFor="switch">Toggle</label>{" "}
+            </div>
+          </div>
+          <span>Use search insted, this might be scary {"😨"}</span>
+        </div>
+				{showTagSwitch === true && <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+					<Tagutil
+						status={status}
+						type="topic"
+						title="Category: Concept"
+						tags={[...tags.tags.filter((item) => item.tag_type === "actual_tag")]}
+						updateSingleTag={updateSingleTag}
+					/>
+					<Tagutil
+						status={status}
+						type="author"
+						title="Category: Author"
+						tags={[...tags.tags.filter((item) => item.tag_type === "author")]}
+						updateSingleTag={updateSingleTag}
+					/>
+				</div>}
       </div>
     </>
   );

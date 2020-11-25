@@ -10,7 +10,13 @@ import Cookie from "js-cookie";
 
 const FilterTags = ({ tags, singleTag }) => {
   let options = tags.map((item) => {
-    return { ...item, value: item.tag, label: `${item.tag} × ${item.count}` };
+    return {
+      ...item,
+      value: item.tag,
+      label: `${item.tag} × ${item.count} ${
+        item.tag_type === "author" ? "(author)" : ""
+      }`,
+    };
   });
   const [selected, setSelected] = useState("");
   const [problemList, fillProblemList] = useState([]);
@@ -21,7 +27,7 @@ const FilterTags = ({ tags, singleTag }) => {
   });
 
   const getProblems = async (filter = null, offsetParam = 0) => {
-    const username = Cookie.get("userName");
+    const username = Cookie.get("userName") || "codechef";
     updateMessage({
       message: "Hold up tight, fetching problems for you!",
       color: "#007eff",
@@ -31,7 +37,9 @@ const FilterTags = ({ tags, singleTag }) => {
     updateOffset(offsetParam);
     try {
       const result = await axios.get(
-        `/api/tags/problems/${username}?offset=${20*offsetParam}&filter=${filter || selected}`
+        `/api/tags/problems/${username}?offset=${20 * offsetParam}&filter=${
+          filter || selected
+        }`
       );
       const problemsObject = result.data.result.data.content;
       const problems = [];
@@ -39,9 +47,13 @@ const FilterTags = ({ tags, singleTag }) => {
         problems.push(problemsObject[prob]);
       }
       fillProblemList([...problems]);
-      console.log(selected);
+
       const tags = filter?.split(",") || selected.split(",");
       fillTagList([...tags]);
+      updateMessage({
+        message: "Problems fetched!",
+        color: "",
+      });
     } catch (err) {
       if (err.response?.data?.result?.errors?.message !== undefined) {
         updateMessage({
@@ -59,12 +71,12 @@ const FilterTags = ({ tags, singleTag }) => {
 
   const [offset, updateOffset] = useState(0);
   const updatePropsOffset = (direction) => {
-    if(direction < 0) {
-      getProblems(null, offset -1)
-    }else if(direction > 0) {
-      getProblems(null, offset +1);
+    if (direction < 0) {
+      getProblems(null, offset - 1);
+    } else if (direction > 0) {
+      getProblems(null, offset + 1);
     }
-  }
+  };
 
   useEffect(() => {
     const singleSelect = (tag) => {
@@ -100,6 +112,21 @@ const FilterTags = ({ tags, singleTag }) => {
             <button
               onClick={() => {
                 getProblems();
+              }}
+              disabled={
+                selected.length === 0 || message.color === "#007eff"
+                  ? true
+                  : false
+              }
+              style={{
+                backgroundColor:
+                  selected.length === 0 || message.color === "#007eff"
+                    ? "#b9b9b9"
+                    : "",
+                cursor:
+                  selected.length === 0 || message.color === "#007eff"
+                    ? "not-allowed"
+                    : "pointer",
               }}
             >
               Get problems

@@ -17,7 +17,7 @@ const Problem = () => {
 
   useEffect(() => {
     document.title = `${problemCode}-Chef'sCamp`;
-    const username = Cookie.get("userName");
+    const username = Cookie.get("userName") || "codechef";
     const fetchProblem = async () => {
       try {
         const result = await axios.get(
@@ -50,6 +50,7 @@ const Problem = () => {
   const getStatement = (statement) => {
     statement = statement.replace(/`/g, "");
     statement = statement.replace(/###/g, "");
+    // statement = statement.replace(/(<br \/>)/g, "");
     return statement;
   };
 
