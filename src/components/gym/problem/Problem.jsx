@@ -5,6 +5,7 @@ import ErrorBoundary from "../../errorBoundary";
 import Cookie from "js-cookie";
 import axios from "axios";
 import "./problem.css";
+import AddTag from "./AddTag";
 
 const Problem = () => {
   const { problemCode } = useParams();
@@ -13,39 +14,50 @@ const Problem = () => {
     color: "#fad75a",
     loaded: false,
     data: null,
+    privateTags: [],
   });
-
+  
+  const user = Cookie.get("userName") || "codechef";
   useEffect(() => {
     document.title = `${problemCode}-Chef'sCamp`;
     const username = Cookie.get("userName") || "codechef";
     const fetchProblem = async () => {
       try {
-        const result = await axios.get(
-          `/api/contests/PRACTICE/problems/${problemCode}/${username}`
-        );
+        const result = await Promise.all([
+          axios.get(
+            `/api/contests/PRACTICE/problems/${problemCode}/${username}`
+          ),
+          username !== "codechef" ? axios.get(
+            `/api/tags/${problemCode}/my/${username}`
+          ) : []
+        ]);
         updateStatus({
+          ...status,
           message: "Problem fetched 🎉",
           color: "",
           loaded: true,
-          data: result.data.result.data.content,
+          data: result[0].data.result.data.content,
+          privateTags: result[1]?.data?.result?.tags || []
         });
       } catch (err) {
+        // console.log(err, {...err})
         updateStatus({
+          ...status,
           message: "Problem fetching failed, please try again later 🤕",
           color: "#d94d65",
           data: null,
           loaded: false,
         });
       }
-		};
-		
-		// const fetchPrivateTags = () => {
-		// 	axios.get('')	
-		// }
+    };
 
     fetchProblem();
     // eslint-disable-next-line
   }, []);
+
+  const addPrivateTag = (tag) => {
+    updateStatus({...status, privateTags: [...status.privateTags, tag]});
+  }
 
   const getStatement = (statement) => {
     statement = statement.replace(/`/g, "");
@@ -97,7 +109,7 @@ const Problem = () => {
               <div className="problem-container-meta">
                 <h5>Tags: </h5>
                 {status.data.tags.length === 0 ? (
-                  <span>No tags available</span>
+                  <span style={{ color: "red" }}>No tags available</span>
                 ) : (
                   status.data.tags
                     .sort((a, b) => a.length - b.length)
@@ -111,22 +123,33 @@ const Problem = () => {
                 )}
                 <hr className="problem-container-hr" />
                 <h5>Private tags: </h5>
-                {status.data.tags.length === 0 ? (
-                  <span>No tags available</span>
+                {user === "codechef" ? (
+                  <span style={{ color: "red" }}>
+                    <Link to="/">Login</Link> to see your private tags.
+                  </span>
                 ) : (
-                  status.data.tags
-                    .sort((a, b) => a.length - b.length)
-                    .map((item, idx) => {
-                      return (
-                        <div
-                          style={{ backgroundColor: "#bada55" }}
-                          className="problem-container-tag-pill"
-                          key={idx}
-                        >
-                          {item}
-                        </div>
-                      );
-                    })
+                  <>
+                    {status.privateTags.length === 0 ? (
+                      <span style={{ color: "red" }}>No tags available</span>
+                    ) : (
+                      status.privateTags
+                        .sort((a, b) => a.length - b.length)
+                        .map((item, idx) => {
+                          return (
+                            <div
+                              style={{ backgroundColor: "#bada55" }}
+                              className="problem-container-tag-pill"
+                              key={idx}
+                            >
+                              {item}
+                            </div>
+                          );
+                        })
+                    )}
+                    <br />
+                    <br />
+                    <AddTag problemData={status.data} addPrivateTag={addPrivateTag} />
+                  </>
                 )}
                 <hr className="problem-container-hr" />
                 <h5>

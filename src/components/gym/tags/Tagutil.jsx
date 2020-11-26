@@ -21,7 +21,7 @@ const Tagutil = ({ style, type, tags, title, updateSingleTag }) => {
                     key={idx} 
                     className="taglist-tag"
                     onClick={() => {
-                      updateSingleTag(tag.tag);
+                      updateSingleTag(`${tag.tag}${type === "private" ? "@private" : ""}`);
                     }}
                   >
                     {tag.tag}{" "}

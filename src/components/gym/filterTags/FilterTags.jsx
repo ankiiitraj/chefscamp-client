@@ -36,8 +36,16 @@ const FilterTags = ({ tags, singleTag }) => {
     fillTagList([]);
     updateOffset(offsetParam);
     try {
+      let endpoint = "/api/tags/problems";
+      if(filter !== null){
+        const filterArr = filter.split('@');
+        if(filterArr[1] === "private"){
+          filter = filterArr[0];
+          endpoint += "/my";
+        }
+      }
       const result = await axios.get(
-        `/api/tags/problems/${username}?offset=${20 * offsetParam}&filter=${
+        `${endpoint}/${username}?offset=${20 * offsetParam}&filter=${
           filter || selected
         }`
       );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./gym.css";
 import Tagutil from "./tags/Tagutil";
 import axios from "axios";
+import Cookie from "js-cookie";
 import FilterTags from "./filterTags/FilterTags";
 
 const Gym = () => {
@@ -16,10 +17,20 @@ const Gym = () => {
     privateTags: [],
   });
   const [singleTag, updateSingleTag] = useState("");
-	const [showTagSwitch, toggle] = useState(0);
+  const [showTagSwitch, toggle] = useState(0);
   const fetchTags = async () => {
     try {
-      const { data } = await axios.get(`/api/tags`);
+      const username = Cookie.get('userName') || null;
+      const allData = await Promise.all([
+        axios.get(`/api/tags`),
+        username !== null ? axios.get(`/api/tags/my/${username}`) : null
+      ]);
+      const { data } = allData[0];
+      let privateTags = [];
+      if(username !== null){
+        const { data } = allData[1];
+        privateTags = [...data.result.tags];
+      }
       data.sort((a, b) => b.count - a.count);
       const topicTags = data
         .filter((item) => item.tag_type === "actual_tag")
@@ -32,6 +43,7 @@ const Gym = () => {
         tags: [...data],
         topicTags: [...topicTags],
         authorTags: [...authorTags],
+        privateTags: [...privateTags]
       });
       setStatus({ message: "success" });
     } catch (err) {

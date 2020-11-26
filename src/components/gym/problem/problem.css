@@ -47,6 +47,8 @@
     height: fit-content;
     text-align: left;
     color: #777;
+    background-color: #1b1b1b;
+    z-index: 10;
 }
 .problem-container-meta h5{
     margin: 0;

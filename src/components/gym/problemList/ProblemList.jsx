@@ -5,7 +5,13 @@ import "./problemlist.css";
 
 const ProblemList = ({ problemList, tagList, message }) => {
   const getUniqueTags = (items) => {
-    const tags = [...new Set(items)];
+    let tags = [];
+    if(typeof items === "string") {
+      tags = [...new Set(items.split(','))];
+      tags = [...tags, ...tagList];
+    }else{
+      tags = [...new Set(items)];
+    }
     tags.sort((a, b) => a.length - b.length);
     const uniqueTags = tags.map((tag) => {
       return (
@@ -41,18 +47,24 @@ const ProblemList = ({ problemList, tagList, message }) => {
               <div key={idx} className="problemlist-problem">
                 <div className="problemlist-heading">
                   <div style={{ fontSize: "x-large" }}>
-                    <Link to={`/gym/problem/${item.code}`} target="_blank">
-                      <b>{item.code}</b><ExternalLink height={25} width={25} />
+                    <Link to={`/gym/problem/${item?.code || item?.problemCode}`} target="_blank">
+                      <b>{item?.code || item?.problemCode}</b>
+                      <ExternalLink height={25} width={25} />
                     </Link>
                   </div>
                   <div style={{}}>
-                    Submissions: {item.solved} | Accuracy:{" "}
-                    {`${parseInt((item.solved / item.attempted) * 100)}%`}{" "}
+                    Submissions: {item?.attempted || item?.totalSubmissions} |
+                    Accuracy:{" "}
+                    {`${parseInt(
+                      ((item?.solved || item?.successfulSubmissions) /
+                        (item?.attempted || item?.totalSubmissions)) *
+                        100
+                    )}%`}{" "}
                   </div>
                 </div>
                 <div className="problemlist-tags">
                   <span style={{ marginRight: "5px" }}>Tags: </span>
-                  {getUniqueTags(item.tags).map((tag) => {
+                  {getUniqueTags(item?.tags || item?.problemTags).map((tag) => {
                     return tag;
                   })}
                 </div>
