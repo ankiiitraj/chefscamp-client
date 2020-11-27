@@ -57,6 +57,25 @@ const NavBar = ({ handleLogout, handleToggle, color, userName, band }) => {
           </div>
         </div>
       </div>
+      <div
+        style={{
+          position: "absolute",
+          width: "300px",
+          right: "-355px",
+          top: "55px",
+          textAlign: "left",
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 0px 15px 5px",
+          borderRadius: "10px",
+          margin: "15px",
+          padding: "15px"
+        }}
+      >
+        See more projects:
+        <div style={{ fontSize: "large", padding: "3px 0px" }} > - <a rel="noopener noreferrer" target="_blank" href="https://dotodsa.netlify.app/">Doto - Progress Tracker</a></div>
+        <div style={{ fontSize: "large", padding: "3px 0px" }} > - <a rel="noopener noreferrer" target="_blank" href="https://visualrithms.netlify.app/">Visualrithms - Algorithmic Visualizer</a></div>
+        <div style={{ fontSize: "large", padding: "3px 0px" }} > - <a rel="noopener noreferrer" target="_blank" href="https://github.com/ankiiitraj/remindingYou">Reminding You</a></div>
+        <div style={{ fontSize: "large", padding: "3px 0px" }} > - <a rel="noopener noreferrer" target="_blank" href="https://ankiiitraj.github.io/SnakeGame/">Snake Game</a></div>
+      </div>
       <nav
         style={{
           boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)",

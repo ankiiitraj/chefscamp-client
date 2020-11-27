@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5208b578-6fec-411d-ba71-bb475cc2c328/deploy-status)](https://app.netlify.com/sites/chefscamp/deploys)
+# < ChefsCamp![](https://user-images.githubusercontent.com/48787278/100488580-11682e00-3135-11eb-81dd-59522d86e12e.png) />
 
-## Available Scripts
+## Note: Source code for backend is available here at 
+https://github.com/ankiiitraj/chefscamp-server
 
-In the project directory, you can run:
+---
 
-### `npm start`
+Made with ❤ to help you grow. Chef'sCamp is a platform that consumes CodeChef API to provide service such as  Tag based filtering of problems, adding personal tags, searching for CodeChef contests and practicing CodeChef problems at Chef'sCamp.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://chefscamp.tech  -- Checkout the application
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Getting Started
+1. Install Node 10.18.1+ (e.g. using [node version manger][nvm]), php 7+ from https://www.php.net/ , latest Composer from https://getcomposer.org/download/ 
+1. Clone the repo, install dependencies:
+   ```
+   git clone https://github.com/ankiiitraj/chefscamp-client
+   1. cd chefscamp-client
+    yarn install
+   2. Make a copy on .env.example as .env and fill the required env vars.
+   3. yarn start
+   ```
 
-### `npm test`
+    ## Similarly, for Backend setup:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```
+    git clone https://github.com/ankiiitraj/chefscamp-server
+    1. cd chefscamp-server
+        composer install
+    2. Make a copy on .env.example as .env and fill the required env vars.
+    3. sudo php -S http://localhost:88
+    ```
+1. Visit `http://localhost:3000` to see the web app and `http://localhost:88` to interact with backend.  
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting familar
+   
+   Watch this video on YouTube https://www.youtube.com/watch?v=HTC7kfEWGIw&lc=UgzrDLznH7RYFm3TsgF4AaABAg
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Authors
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* **Ankit Raj** 
 
-### `npm run eject`
+See also the list of [contributors](https://github.com/ankiiitraj/chefscamp/contributors) who participated in this project.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## License
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Acknowledgments
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* I would like to thank [CodeChef](https://codechef.com) for such a great platform and detailed API Documentation
+* Chef'sCamp is the result of inspiration by CodeChef itself.
 
-## Learn More
+## Contact 
+  * Creator's Website : https://ankiiitraj.github.io
+  * CodeChef Profile : https://codechef.com/users/mkitkat
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
