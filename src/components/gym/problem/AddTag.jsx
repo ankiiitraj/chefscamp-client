@@ -3,16 +3,22 @@ import TagInputForm from "./TagInputForm";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Cookie from "js-cookie";
+import { useToasts } from 'react-toast-notifications';
 
 const AddTag = ({ problemData, addPrivateTag }) => {
 	const [tagInputbool, showTagInput] = useState(false);
 	const [status, updateStatus] = useState({message: "", color: ""});
   const history = useHistory();
+  const { addToast } = useToasts();
 
   const addTag = async (tag) => {
 		updateStatus({message: "Creating...", color: "#fff"});
     const username = Cookie.get("userName") || null;
     if (username === null) {
+      addToast("Login expired, Signin again!", {
+        appearance: 'error',
+        autoDismiss: true,
+      })
       history.push("/");
     }
     let tags = "";

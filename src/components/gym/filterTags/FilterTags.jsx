@@ -8,7 +8,7 @@ import "react-virtualized-select/styles.css";
 import axios from "axios";
 import Cookie from "js-cookie";
 
-const FilterTags = ({ tags, singleTag }) => {
+const FilterTags = ({ tags, privateTags, singleTag }) => {
   let options = tags.map((item) => {
     return {
       ...item,
@@ -18,6 +18,14 @@ const FilterTags = ({ tags, singleTag }) => {
       }`,
     };
   });
+  let privateOptions = privateTags.map((item) => {
+    return {
+      ...item,
+      value: `${item.tag}@private`,
+      label: `${item.tag} × ${item.count} ${"(private)"}`,
+    };
+  });
+  options = [...options, ...privateOptions];
   const [selected, setSelected] = useState("");
   const [problemList, fillProblemList] = useState([]);
   const [tagList, fillTagList] = useState([]);

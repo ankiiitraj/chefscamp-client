@@ -124,7 +124,7 @@ class App extends Component {
       >
         <center>
           <div style={{ width: "1000px", maxWidth: "1000px", position: "relative" }}>
-            <ToastProvider>
+            <ToastProvider placement="bottom-left">
               <Router>
                 <NavBar
                   handleToggle={this.handleToggle}

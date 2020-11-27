@@ -103,7 +103,7 @@ const Gym = () => {
           )}
         </div>
         <div className="gym-tags-select">
-          <FilterTags singleTag={singleTag} tags={tags.tags} />
+          <FilterTags privateTags={tags.privateTags} singleTag={singleTag} tags={tags.tags} />
         </div>
       </div>
       <div className="alltags-container">

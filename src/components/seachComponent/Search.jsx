@@ -140,7 +140,7 @@ class Search extends Component {
       } else {
         renderList = null;
       }
-    } else if(!this.state.message){
+    } else if (!this.state.message) {
       renderList = (
         <ul style={searchList} className="suggestions">
           <li>
@@ -157,9 +157,38 @@ class Search extends Component {
           borderRadius: "10px",
           margin: "15px",
           height: "480px",
-          paddingTop: "150px",
+          paddingTop: "50px",
         }}
       >
+        <div
+          style={{
+            margin: "10px 0px",
+            width: "500px",
+            fontSize: "xxx-large",
+          }}
+        >
+          {" "}
+          Go to <Link to="/gyn">Gym</Link>
+        </div>
+        <div
+          style={{
+            margin: "10px 0px",
+            width: "500px",
+            fontSize: "large",
+          }}
+        >
+          OR
+        </div>
+        <div
+          style={{
+            textAlign: "left",
+            margin: "10px 0px",
+            width: "500px",
+            fontSize: "large",
+          }}
+        >
+          Search for a contest:
+        </div>
         <input
           type="text"
           style={textBox}
@@ -177,7 +206,7 @@ class Search extends Component {
               padding: "1em",
               width: "250px",
               borderRadius: "20px",
-              textAlign: "center"
+              textAlign: "center",
             }}
           >
             <strong>{this.state.message}</strong>

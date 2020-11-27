@@ -17,15 +17,27 @@ const Tagutil = ({ style, type, tags, title, updateSingleTag }) => {
             {tags.length > 0 &&
               tags.map((tag, idx) => {
                 return (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="taglist-tag"
+                    style={{
+                      backgroundColor: type === "private" ? "#77b255" : "",
+                    }}
                     onClick={() => {
-                      updateSingleTag(`${tag.tag}${type === "private" ? "@private" : ""}`);
+                      updateSingleTag(
+                        `${tag.tag}${type === "private" ? "@private" : ""}`
+                      );
                     }}
                   >
                     {tag.tag}{" "}
-                    <span className="taglist-tag-count">×{tag.count}</span>
+                    <span
+                      style={{
+                        backgroundColor: type === "private" ? "#42851b" : "",
+                      }}
+                      className="taglist-tag-count"
+                    >
+                      ×{tag.count}
+                    </span>
                   </div>
                 );
               })}

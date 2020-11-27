@@ -23,7 +23,7 @@ class login extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     document.title = `Chef'sCamp`;
   }
 
@@ -38,28 +38,35 @@ class login extends Component {
         style={{
           paddingTop: "150px",
           height: "450px",
-          boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)", 
-          borderRadius: "10px", 
-          margin: "15px" 
+          boxShadow: "0px 0px 15px 5px rgba(0,0,0,.35)",
+          borderRadius: "10px",
+          margin: "15px",
         }}
       >
         <div>
           <Welcome />
           <div className="login-div">
             <div className="login-div-practice">
-              <h1>Practice at Gym!</h1>
-              <Link style={{fontSize: "x-large"}} to="/gym">Gym</Link>
+              <h1 style={{ margin: "10px 0px" }}>Practice at Gym!</h1>
+              <Link style={{ fontSize: "xxx-large" }} to="/gym">
+                Gym
+              </Link>
             </div>
             <div className="login-div-login">
               <h3>
                 Hit <i>login</i> to get started!
               </h3>
               <button
-                style={{ ...style, cursor: this.props.loading ? "" : "pointer" }}
+                style={{
+                  ...style,
+                  cursor: this.props.loading ? "" : "pointer",
+                }}
                 disabled={this.props.loading}
                 onClick={this.handleClick}
               >
-                {this.props.loading ? "Signing in . . ." : "Login With Codechef"}
+                {this.props.loading
+                  ? "Signing in . . ."
+                  : "Login With Codechef"}
               </button>
               {this.props.message && (
                 <div
@@ -76,6 +83,10 @@ class login extends Component {
               )}
             </div>
           </div>
+        </div>
+        <div style={{ fontSize: "large", paddingTop: "55px" }}>
+          * Gym allows you to practice problems with <b>concept</b>,{" "}
+          <b>author</b> and <b>personal</b> tag filters! *
         </div>
       </div>
     );
