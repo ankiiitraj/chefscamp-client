@@ -25,7 +25,7 @@ const FilterTags = ({ tags, privateTags, singleTag }) => {
       label: `${item.tag} × ${item.count} ${"(private)"}`,
     };
   });
-  options = [...options, ...privateOptions];
+  options = [...privateOptions, ...options];
   const [selected, setSelected] = useState("");
   const [problemList, fillProblemList] = useState([]);
   const [tagList, fillTagList] = useState([]);

@@ -168,7 +168,7 @@ class Search extends Component {
           }}
         >
           {" "}
-          Go to <Link to="/gyn">Gym</Link>
+          Go to <Link to="/gym">Gym</Link>
         </div>
         <div
           style={{
