@@ -37,6 +37,7 @@
     text-align: left;
     line-height: 1.618;
     font-size: large;
+    word-break: break-all;
 }
 .problem-container-meta{
     width: 35%;
