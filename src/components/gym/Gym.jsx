@@ -18,45 +18,47 @@ const Gym = () => {
   });
   const [singleTag, updateSingleTag] = useState("");
   const [showTagSwitch, toggle] = useState(0);
-  const fetchTags = async () => {
-    try {
-      const username = Cookie.get('userName') || null;
-      const allData = await Promise.all([
-        axios.get(`/api/tags`),
-        username !== null ? axios.get(`/api/tags/my/${username}`) : null
-      ]);
-      const { data } = allData[0];
-      let privateTags = [];
-      if(username !== null){
-        const { data } = allData[1];
-        privateTags = [...data.result.tags];
-      }
-      data.sort((a, b) => b.count - a.count);
-      const topicTags = data
-        .filter((item) => item.tag_type === "actual_tag")
-        .slice(0, 10);
-      const authorTags = data
-        .filter((item) => item.tag_type === "author")
-        .slice(0, 10);
-      setTags({
-        ...tags,
-        tags: [...data],
-        topicTags: [...topicTags],
-        authorTags: [...authorTags],
-        privateTags: [...privateTags]
-      });
-      setStatus({ message: "success" });
-    } catch (err) {
-      setStatus({
-        message: "Tags fetching failed, please try later!",
-        color: "#d94d65",
-      });
-    }
-  };
+
   useEffect(() => {
     document.title = "Gym - Chef'sCamp";
+  }, []);
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const username = Cookie.get('userName') || null;
+        const allData = await Promise.all([
+          axios.get(`/api/tags`),
+          username !== null ? axios.get(`/api/tags/my/${username}`) : null
+        ]);
+        const { data } = allData[0];
+        let privateTags = [];
+        if(username !== null){
+          const { data } = allData[1];
+          privateTags = [...data.result.tags];
+        }
+        data.sort((a, b) => b.count - a.count);
+        const topicTags = data
+          .filter((item) => item.tag_type === "actual_tag")
+          .slice(0, 10);
+        const authorTags = data
+          .filter((item) => item.tag_type === "author")
+          .slice(0, 10);
+        setTags({
+          tags: [...data],
+          topicTags: [...topicTags],
+          authorTags: [...authorTags],
+          privateTags: [...privateTags]
+        });
+        setStatus({ message: "success" });
+      } catch (err) {
+        setStatus({
+          message: "Tags fetching failed, please try later!",
+          color: "#d94d65",
+        });
+      }
+    };
     fetchTags();
-    // eslint-disable-next-line
   }, []);
 
   return (

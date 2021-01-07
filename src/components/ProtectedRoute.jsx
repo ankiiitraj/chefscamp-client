@@ -1,16 +1,24 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Cookie from "js-cookie";
+import { useToasts } from "react-toast-notifications";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const userName = Cookie.get("userName");
+  const token = Cookie.get("auth");
+  const {addToast} = useToasts();
+  if (!userName || !token) {
+    addToast("You need to login again!", {
+      appearance: 'error',
+      autoDismiss: true,
+    })
+    rest.handleLogout();
+  }
   return (
     <Route
       {...rest}
       render={props => {
-        const userName = Cookie.get("userName");
-        if (userName || rest.userDetails.isLoggedIn) {
-          return <Component {...props} userDetails={rest.userDetails} />;
-        } else {
+        if (!userName || !token) {
           return (
             <Redirect
               to={{
@@ -21,6 +29,8 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
               }}
             />
           );
+        } else {
+          return <Component {...props} userDetails={rest.userDetails} />;
         }
       }}
     />

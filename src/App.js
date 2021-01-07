@@ -156,24 +156,28 @@ class App extends Component {
                     }
                   />
                   <ProtectedRoute
+                    handleLogout={this.handleLogout}
                     exact
                     userDetails={this.state}
                     path="/contest/:contestCode"
                     component={ContestPage}
                   />
                   <ProtectedRoute
+                    handleLogout={this.handleLogout}
                     exact
                     userDetails={this.state}
                     path="/ranklist/:contestCode"
                     component={Ranklist}
                   />
                   <ProtectedRoute
+                    handleLogout={this.handleLogout}
                     exact
                     userDetails={this.state}
                     path="/contest/:contestCode/problem/:problemCode"
                     component={ProblemInfo}
                   />  
                   <ProtectedRoute
+                    handleLogout={this.handleLogout}
                     exact
                     userDetails={this.state}
                     path="/ide"
