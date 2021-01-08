@@ -66,6 +66,7 @@ class App extends Component {
       message: null
     });
     Cookie.remove("userName");
+    Cookie.remove("auth");
     Cookie.remove("band");
   }
   componentDidMount() {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./ranklist.css";
-import Cookie from "js-cookie";
 import axios from "axios";
 
 class Ranklist extends Component {
@@ -18,16 +17,15 @@ class Ranklist extends Component {
 	}
 	componentDidMount() {
 		document.title = `Ranklist ${this.props.match.params.contestCode}-Chef'sCamp`;
-		let userName = Cookie.get("userName");
 		axios
 			.get(
-				`/api/rankings/${this.props.match.params.contestCode}/${userName}`
+				`/api/rankings/${this.props.match.params.contestCode}`
 			)
 			.then(res => {
 				this.setState({ loaded: true, data: res.data });
 			})
 			.catch(() => {
-				this.setState({ message: "Something went wrong, try agagin later!" })
+				this.setState({ message: "Something went wrong, try again later!" })
 			});
 	}
 	renderTableData() {

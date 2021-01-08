@@ -34,7 +34,7 @@ const AddTag = ({ problemData, addPrivateTag }) => {
       problemTags: tags,
     };
 		try{
-			await axios.post(`/api/tags/${username}`, payload);
+			await axios.post(`/api/tags`, payload);
 			updateStatus({message: "Created...", color: "#96ff8d"});
 			addPrivateTag(tag);
 		}catch(err){

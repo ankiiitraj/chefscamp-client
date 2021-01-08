@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./styles/submissions.css";
 import axios from "axios";
-import Cookie from "js-cookie";
 
 class SuccessfulSubmissions extends Component {
   constructor(props) {
@@ -14,14 +13,13 @@ class SuccessfulSubmissions extends Component {
     };
   }
   componentWillReceiveProps(newProps) {
-    let userName = Cookie.get("userName");
     if(newProps.submissions){
       this.setState({
         message: "Internal server error, try later!",
       });
     }else if (newProps.probStatus) {
       axios
-        .get(`/api/submissions/${newProps.problemCode}/${userName}`)
+        .get(`/api/submissions/${newProps.problemCode}`)
         .then((res) => {
           if (
             res.data.result.data.message === "submissions fetched successfully"

@@ -42,9 +42,8 @@ class Ide extends Component {
       language: lang,
       input: input,
     };
-    let userName = Cookie.get("userName");
     axios
-      .post(`/api/ide/run/${userName}`, payload)
+      .post(`/api/ide/run`, payload)
       .then((res) => {
         this.setState({ link: res.data.result.data.link });
         this.intervalID = setInterval(this.getStatus, 4000);
@@ -59,8 +58,7 @@ class Ide extends Component {
   }
   getStatus() {
     this.numRequests += 1;
-    let userName = Cookie.get("userName");
-    axios.get(`/api/ide/status/${this.state.link}/${userName}`)
+    axios.get(`/api/ide/status/${this.state.link}`)
     .then((res) => {
       if (this.numRequests > 3) {
         this.setState({

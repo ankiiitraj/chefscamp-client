@@ -4,7 +4,6 @@ import MarkdownRender from "../../MarkdownRender.js";
 import SuccessfulSubmissions from "./SuccessfulSubmissions";
 import ErrorBoundary from "../errorBoundary";
 import axios from "axios";
-import Cookie from "js-cookie";
 import "./styles/problemDescription.css";
 
 class ProblemInfo extends Component {
@@ -22,10 +21,9 @@ class ProblemInfo extends Component {
   }
   componentDidMount() {
     document.title = `${this.props.match.params.problemCode}-Chef'sCamp`;
-    let userName = Cookie.get("userName");
     axios
       .get(
-        `/api/contests/${this.props.match.params.contestCode}/problems/${this.props.match.params.problemCode}/${userName}`
+        `/api/contests/${this.props.match.params.contestCode}/problems/${this.props.match.params.problemCode}`
       )
       .then(res => {
         if (res.data.result.data.content.body) {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./styles/listProblems.css";
-import Cookie from "js-cookie";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -20,8 +19,7 @@ class ListProblems extends Component {
   }
   componentDidMount() {
     document.title = `${this.props.contestCode}-Chef'sCamp`;
-    let userName = Cookie.get("userName");
-    axios.get(`/api/contests/${this.props.contestCode}/${userName}`)
+    axios.get(`/api/contests/${this.props.contestCode}`)
       .then((res) => {
         this.props.handleLiftContestDetail(res.data);
         if (res.data.result.data.content.problemsList.length > 0) {

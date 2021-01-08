@@ -24,7 +24,7 @@ class Search extends Component {
     console.log(this.props.contests && 1);
     if (!this.props.contests && userName) {
       axios
-        .get(`/api/contests/${userName}`)
+        .get(`/api/contests`)
         .then((res) => {
           this.props.handleLiftContests(res.data);
         })

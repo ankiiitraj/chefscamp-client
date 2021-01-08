@@ -25,10 +25,10 @@ const Problem = () => {
       try {
         const result = await Promise.all([
           axios.get(
-            `/api/contests/PRACTICE/problems/${problemCode}/${username}`
+            `/api/contests/PRACTICE/problems/${problemCode}`
           ),
           username !== "codechef" ? axios.get(
-            `/api/tags/${problemCode}/my/${username}`
+            `/api/tags/${problemCode}/my`
           ) : []
         ]);
         updateStatus({

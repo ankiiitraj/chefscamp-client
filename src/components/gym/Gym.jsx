@@ -29,7 +29,7 @@ const Gym = () => {
         const username = Cookie.get('userName') || null;
         const allData = await Promise.all([
           axios.get(`/api/tags`),
-          username !== null ? axios.get(`/api/tags/my/${username}`) : null
+          username !== null ? axios.get(`/api/tags/my`) : null
         ]);
         const { data } = allData[0];
         let privateTags = [];
