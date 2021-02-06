@@ -22,7 +22,7 @@ class Footer extends Component {
           <li style={{padding: "10px", display: "inline-block", textAlign: "left"}}>
             <h2>Source Code</h2>
 						{/* eslint-disable-next-line */}
-            <div style={{padding: "5px 0px"}}><a href="https://github.com/ankiiitraj/chefscamp-client/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={(this.props.userDetails.themeBool == 0 ? {color:"white"} : {color:"black"})}><b>Contribte</b></a></div>
+            <div style={{padding: "5px 0px"}}><a href="https://github.com/ankiiitraj/chefscamp-client/blob/master/README.md" target="_blank" rel="noopener noreferrer" style={(this.props.userDetails.themeBool == 0 ? {color:"white"} : {color:"black"})}><b>Contribute</b></a></div>
 						{/* eslint-disable-next-line */}
             <div style={{padding: "5px 0px"}}><a href="https://github.com/ankiiitraj/chefscamp-client/issues" target="_blank" rel="noopener noreferrer" style={(this.props.userDetails.themeBool == 0 ? {color:"white"} : {color:"black"})}><b>Report an issue</b></a></div>
           </li>
